@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GetTechy</title>
 </head>
-<body>
-  <div class= "mainContent">
-      <header class="navWrap">
-          <a href="/">Home</a>
-          <a href="/dashboard">Dashboard</a>
-          
-      </header>
 
-  </div>
+<body>
+    <div class="mainContent">
+        <header class="navWrap">
+            <div>
+                <nav class="navBar">
+                    <a href="/">Home</a>
+                    <a href="/dashboard">Dashboard</a>
+                    {{!-- if logged in display logout link --}}
+                    {{#if loggedIn}}
+                    <a href="/" id="logout">Logout</a>
+                    {{!-- Else display login link --}}
+                    {{else}}
+                    <a href="/login" id="login">Login</a>
+                    {{/if}}
+
+
+                </nav>
+            </div>
+            <h1 id="title"> GetTechy with The Tech Blog</h1>
+        </header>
+        <main>
+
+            {{{ body }}}
+            
+        </main>
+
+
+    </div>
+
+    {{!-- If user logged in access logout js --}}
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
+
 </html>
