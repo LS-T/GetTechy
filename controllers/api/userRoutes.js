@@ -1,7 +1,33 @@
 const router = require('express').Router();
+const { Post, User } = require("../../models");
 
-router.get('/', (req,res) => {
-    res.json({message:"working"});
-});
+
+router.post('/', async (req,res) => {
+    try{
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;

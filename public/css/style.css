@@ -1,0 +1,24 @@
+/* Classes */
+
+.nav-link {
+    margin: 15px 0;
+}
+.navWrap {
+    background-color: bisque;
+}
+
+
+
+
+
+
+
+
+
+/* IDs */
+#title {
+    font-size: larger;
+    box-sizing: border-box;
+    background-color: burlywood;
+    border-radius: 35px;
+}
