@@ -27,8 +27,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        // Password must be at least 7 characters long
-        len: [7],
+        len: [3],
       },
     },
   },
@@ -38,14 +37,6 @@ User.init(
       async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
-      },
-
-      async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
-        return updatedUserData;
       },
     },
     sequelize,
