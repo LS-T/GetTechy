@@ -1,4 +1,4 @@
-const newPostForm = (e) => {
+const newPostForm = async (e) => {
     e.prevent.Default();
 
     const title = document.querySelector('#post-title').value.trim();
@@ -21,5 +21,11 @@ const newPostForm = (e) => {
     }
 };
 
-document.querySelector('#new-post').addEventListener('submit', newPostForm);
+document.querySelector('#new-post').addEventListener('submit', newPostForm );
+
+document.querySelector('#createPost').addEventListener('click', () => {
+    
+    console.log("clicky clicky working");
+    document.location.replace('/dashboard');
+})
 

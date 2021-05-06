@@ -1,27 +1,49 @@
-<div class="container d-flex justify-content-center">
-  <div class="urPosts">
-      <h1 id="yourPosts">Your posts</h1>
-      <hr class="mx-auto">
-      <button class="btn btn-primary" id="addPost">Add new post</button>
+<div class="container column d-flex justify-content-center row">
+  <div class="urPosts col-12">
+    <h1 id="yourPosts">Your posts</h1>
+    <hr class="mx-auto">
   </div>
   {{#if post.length}}
   {{!-- <div class="card">
-  <div class="card-body">
-        {{#each user as |post|}}
-        <h2>{{post.title}}</h2>
-        <br>
-        <p>{{post.content}}</p>
+    <div class="card-body">
+      {{#each user as |post|}}
+      <h2>{{post.title}}</h2>
+      <br>
+      <p>{{post.content}}</p>
 
 
-        {{/each}}
-  </div> --}}
+      {{/each}}
+    </div> --}}
 
-  {{/if}}
+    {{/if}}
+
+    <br>
+
+    <div class="">
+      <div class=" container d-flex col-12 card">
+        <h2 class="" id="yourPosts">New Post</h2>
+        <form id="new-post">
+          <label for="post-title" class="form-label">Title</label>
+          <input type="text" id="post-title" class="form-input">
+
+          <br>
+
+          <label for="content" class="form-label">Content</label>
+            <textarea id="content" name="content" placeholder="Write something.." style="height:200px"></textarea>
+
+          <div class="container d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary" id="createPost">Create</button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
 
 
-    
 
-  
-</div>
 
-<script src="/js/post.js"></script>
+
+
+  </div>
+
+  <script src="/js/post.js"></script>
