@@ -1,5 +1,5 @@
 const newPostForm = async (e) => {
-    e.prevent.Default();
+    e.preventDefault();
 
     const title = document.querySelector('#post-title').value.trim();
     const content = document.querySelector('#content-title').value.trim();
@@ -8,9 +8,7 @@ const newPostForm = async (e) => {
         const response = await fetch('/api/posts/', {
             method:"POST",
             body:JSON.stringify({ title, content }),
-            headers:{
-                'Content-Type': 'application/json'
-            }
+            headers:{ 'Content-Type': 'application/json'}
         });
 
         if(response.ok) {
@@ -21,11 +19,4 @@ const newPostForm = async (e) => {
     }
 };
 
-document.querySelector('#new-post').addEventListener('submit', newPostForm );
-
-document.querySelector('#createPost').addEventListener('click', () => {
-    
-    console.log("clicky clicky working");
-    document.location.replace('/dashboard');
-})
-
+document.querySelector('.new-post').addEventListener('submit', newPostForm );

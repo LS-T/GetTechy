@@ -22,6 +22,9 @@ input[type=text], textarea {
 .form-label{
     text-align: center;
 }
+.postCard {
+    flex: auto;
+}
 
 
 

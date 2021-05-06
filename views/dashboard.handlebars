@@ -1,10 +1,25 @@
 {{#each findPosts as |post| }}
-    <div>
-        <h2>
-            <a href="/post/{{post.id}}">{{post.title}}</a>
-        </h2>
-        <p>Posted: by {{user.username}}</p>
-        console.log({{post.title}})
+{{!-- <div>
+    <h2>
+        <a href="/post/{{post.id}}">{{post.title}}</a>
+    </h2>
+    <p>Posted: by {{user.username}}</p>
+    console.log({{post.title}})
+</div> --}}
+
+<div class="row text-center">
+    <div class="col-12 mt-4 mb-4 card">
+        <h2 class="card-header">{{post.title}}</h2>
+        <hr class="mx-auto">
+        <div class="card-body">
+            <h5 class="card-title">Posted by {{user.username}}</h5>
+            <p class="card-text">{{post.content}}</p>
+            <a href="/post/{{post.id}}" class="btn btn-primary">Visit post</a>
+        </div>
     </div>
-    
+</div>
+
+
+
+
 {{/each}}
