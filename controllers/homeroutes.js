@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, Comment, User } = require("../models");
+const { Post, User } = require("../models");
 const withAuth = require('../utils/auth');
 
 router.get("/", (req, res) => {
@@ -18,6 +18,31 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+
+router.get('/profile', withAuth, async (req,res) => {
+  try{
+    const myProfile = await User.findByPk(req.session.user_id, {
+      attributes: {exclude: ["password"] },
+      include:[{model: Post }],
+    });
+
+    const user = myProfile.map((post) => {
+      return post.get({plain: true });
+    })
+    
+
+    console.log(user);
+    res.render('myprofile', { user, logged_in: true});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
+
 router.get('/dashboard', withAuth, async (req,res) => {
   try {
       const postData = await Post.findAll({
@@ -28,24 +53,18 @@ router.get('/dashboard', withAuth, async (req,res) => {
               },
           ],
       });
+      console.log(postData);
       const findPosts = postData.map((post) => {
-          post.get({ plain: true });
+          return post.get({ plain: true });
       })
 
+   
       console.log(findPosts);
-
-      res.render('dashboard',{
-          findPosts,
-          logged_in: req.session.logged_in
-      });
-
-
-
-
+      res.render('dashboard',{findPosts, logged_in: req.session.logged_in});
   } catch (err) {
       res.status(500).json(err)
     };
   
-})
+});
 
 module.exports = router;

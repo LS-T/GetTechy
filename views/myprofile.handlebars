@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content center">
+  <div>
+      <h1>{{username}}</h1>
+      <hr class="mx-auto">
+  </div>
+  
+  <div class="card">
+  <div class="card-body">
+        {{#each user as |object|}}
+        <h2>{{post.title}}</h2>
+        <br>
+        <p>{{post.content}}</p>
+
+
+        {{/each}}
+  </div>
+
+
+    
+
+  
+</div>

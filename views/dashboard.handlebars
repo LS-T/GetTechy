@@ -1,5 +1,10 @@
-<article class="posts">
-    {{#each posts as |post|}}
-        {{> post-cards }}
-    {{/each}}
-</article>
+{{#each findPosts as |post| }}
+    <div>
+        <h2>
+            <a href="/post/{{post.id}}">{{post.title}}</a>
+        </h2>
+        <p>Posted: by {{user.username}}</p>
+        console.log({{post.title}})
+    </div>
+    
+{{/each}}
