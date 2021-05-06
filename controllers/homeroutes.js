@@ -19,20 +19,20 @@ router.get("/login", (req, res) => {
 });
 
 
-router.get('/profile', withAuth, async (req,res) => {
+router.get('/profile', async (req,res) => {
   try{
-    const myProfile = await User.findByPk(req.session.user_id, {
-      attributes: {exclude: ["password"] },
-      include:[{model: Post }],
-    });
+    // const myProfile = await User.findByPk(req.session.user_id, {
+    //   attributes: {exclude: ["password"] },
+    //   // include:[{model: Post }],
+    // });
 
-    const user = myProfile.map((post) => {
-      return post.get({plain: true });
-    })
+    // const user = myProfile.map((post) => {
+    //   return post.get({plain: true });
+    // })
     
 
-    console.log(user);
-    res.render('myprofile', { user, logged_in: true});
+    // console.log(user);
+    res.render('myprofile');
   } catch (err) {
     res.status(500).json(err);
   }

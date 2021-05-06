@@ -6,7 +6,9 @@
 .navWrap {
     background-color: rgb(7, 7, 7);
 }
-
+.urPosts {
+    margin-top: 25px;
+}
 
 
 
@@ -21,4 +23,9 @@
     box-sizing: border-box;
     background-color: burlywood;
     border-radius: 35px;
+}
+
+#yourPosts {
+    font-size: large;
+    text-indent: 35px;
 }
