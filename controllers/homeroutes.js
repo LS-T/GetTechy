@@ -27,10 +27,16 @@ router.get('/profile', withAuth, async (req,res) => {
     });
 
     const user = myProfile.get({plain: true });
+
+    const tryPost = await Post.findByPk(req.session.user_id);
+
+    const grabPosts = tryPost.get({plain: true});
+
+    console.log(grabPosts.title)
     
 
     console.log(user);
-    res.render('myprofile', { ...user, logged_in: req.session.logged_in});
+    res.render('myprofile', { ...user, grabPosts, logged_in: req.session.logged_in});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -65,6 +71,6 @@ router.get('/dashboard', withAuth, async (req,res) => {
   
 });
 
-router.get
+
 
 module.exports = router;

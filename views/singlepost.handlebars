@@ -1,0 +1,39 @@
+<div class="col-12 mt-4 mb-4 card text-center">
+    <h2 class="card-header w-100">{{Posts.title}}</h2>
+    <hr class="mx-auto">
+    <div class="card-body">
+        <h5 class="card-title">Posted by {{Posts.user.username}}</h5>
+        <p class="card-text">{{Posts.content}}</p>
+
+    </div>
+    <hr class="mx-auto pb-2">
+
+    
+
+</div>
+
+
+<div class=" container d-flex col-12 mt-4 mb-4 justify-content-center">
+    <ul style="margin-top: 20px">
+    Comments
+    <hr class="mx-auto pb-2"
+    {{#each comments as |comment| }}
+    <li>
+      <p>{{comment.comment_text}} -- {{comment.user.username}}</p>
+    </li>
+    {{/each}}
+  </ul>
+
+</div>
+
+
+<div class="col-12 mt-4 mb-4 text-center">
+    <form class='form new-comment-form'>
+      <textarea class="form-input w-100" id="comment_text"></textarea>
+      <button type='button' class='btn btn-primary' id="comment-button" data-id="{{Posts.id}}">Post comment</button>
+    </form>
+
+</div>
+
+
+<script src="/js/comment.js"></script>
