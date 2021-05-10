@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const { Post, User } = require("../models");
-const withAuth = require('../utils/auth');
+const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) => {
-  res.render('homepage');
+  res.render("homepage");
 });
 
 router.get("/signup", (req, res) => {
@@ -18,59 +18,43 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-
-router.get('/profile', withAuth, async (req,res) => {
-  try{
+router.get("/profile", withAuth, async (req, res) => {
+  try {
     const myProfile = await User.findByPk(req.session.user_id, {
-      attributes: {exclude: ["password"] },
-      include:[{model: Post }],
+      attributes: { exclude: ["password"] },
     });
 
-    const user = myProfile.get({plain: true });
-
-    const tryPost = await Post.findByPk(req.session.user_id);
-
-    const grabPosts = tryPost.get({plain: true});
-
-    console.log(grabPosts.title)
-    
+    const user = myProfile.get({ plain: true });
 
     console.log(user);
-    res.render('myprofile', { ...user, grabPosts, logged_in: req.session.logged_in});
+
+    res.render("myprofile", { ...user, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
+router.get("/dashboard", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
+    console.log(postData);
+    const findPosts = postData.map((post) => {
+      return post.get({ plain: true });
+    });
+
+    console.log(findPosts);
+    res.render("dashboard", { findPosts, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
-
-
-
-
-router.get('/dashboard', withAuth, async (req,res) => {
-  try {
-      const postData = await Post.findAll({
-          include: [
-              {
-                  model:User,
-                  attributes:['username']
-              },
-          ],
-      });
-      console.log(postData);
-      const findPosts = postData.map((post) => {
-          return post.get({ plain: true });
-      })
-
-   
-      console.log(findPosts);
-      res.render('dashboard',{findPosts, logged_in: req.session.logged_in});
-  } catch (err) {
-      res.status(500).json(err)
-    };
-  
-});
-
-
 
 module.exports = router;

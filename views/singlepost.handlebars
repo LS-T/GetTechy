@@ -14,15 +14,15 @@
 
 
 <div class=" container d-flex col-12 mt-4 mb-4 justify-content-center">
-    <ul style="margin-top: 20px">
-    Comments
-    <hr class="mx-auto pb-2"
-    {{#each comments as |comment| }}
-    <li>
-      <p>{{comment.comment_text}} -- {{comment.user.username}}</p>
-    </li>
-    {{/each}}
-  </ul>
+      <ul class="text-center" style="margin-top: 20px">
+        <h2> Comments</h2>
+        <hr class="mx-auto pb-2"
+        {{#each comments as |comment| }}
+        <li>
+          <p>{{comment.comment_text}} - {{comment.user.username}}</p>
+        </li>
+        {{/each}}
+      </ul>
 
 </div>
 
