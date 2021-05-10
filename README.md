@@ -9,3 +9,4 @@ This application was created to practice using MVC is an architectural layout. T
                     SO that i can look at new posts and comment on them
 
 # Deployable link
+https://pure-stream-16771.herokuapp.com/
